@@ -1,0 +1,14 @@
+{
+  "name": "claude",
+  "kind": "cli",
+  "description": "Claude Code, signed in to claude.ai, with its connectors (Gmail)",
+  "cli": {
+    "install": { "image": "claude" },
+    "command": "claude",
+    "allow": ["--version", "-p *", "--print *", "mcp *", "auth *"],
+    "home": true
+  },
+  "hosts": ["api.anthropic.com", "claude.ai", "*.claude.ai", "console.anthropic.com", "*.anthropic.com", "statsig.anthropic.com"],
+  "secrets": [],
+  "limits": { "seconds": 300, "memory_mb": 1024 }
+}
