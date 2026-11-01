@@ -1,17 +1,17 @@
 {
   "name": "claude",
   "kind": "cli",
-  "description": "Claude Code, signed in to claude.ai, with its connectors (Gmail)",
+  "description": "Claude Code, Anthropic's coding agent. Sign in once with cli_login (a claude.ai account, so its connectors come too), then run `-p <prompt>`.",
   "cli": {
-    "install": {
-      "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-arm64/-/claude-code-linux-arm64-2.1.316.tgz",
-      "sha256": "3a948e45a0c79d1b41e5e40bb4163b5f9e4a193c16ed72c949d8e5f55e9d875d"
-    },
-    "command": "package/claude",
-    "allow": ["--version", "-p *", "--print *", "mcp *", "auth *"],
-    "home": true
+    "install": { "image": "/usr/local/bin/claude" },
+    "command": "claude",
+    "allow": ["-p *", "--print *", "* -p *", "* --print *", "auth status*", "auth logout", "mcp list", "mcp get *", "--version", "--help"],
+    "approvals": ["auth logout"],
+    "env": { "DISABLE_AUTOUPDATER": "1", "ANTHROPIC_API_KEY": "secret?:ANTHROPIC_API_KEY" },
+    "home": true,
+    "login": { "args": ["auth", "login", "--claudeai"], "listen": true, "signed_in": ".claude/.credentials.json" }
   },
-  "hosts": ["api.anthropic.com", "claude.ai", "*.claude.ai", "console.anthropic.com", "*.anthropic.com", "statsig.anthropic.com"],
-  "secrets": [],
-  "limits": { "seconds": 300, "memory_mb": 1024 }
+  "hosts": ["*.anthropic.com", "claude.ai", "*.claude.ai", "claude.com", "*.claude.com"],
+  "secrets": ["ANTHROPIC_API_KEY"],
+  "limits": { "seconds": 900, "memory_mb": 4096 }
 }
