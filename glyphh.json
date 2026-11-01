@@ -3,8 +3,11 @@
   "kind": "cli",
   "description": "Claude Code, signed in to claude.ai, with its connectors (Gmail)",
   "cli": {
-    "install": { "image": "claude" },
-    "command": "claude",
+    "install": {
+      "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-arm64/-/claude-code-linux-arm64-2.1.316.tgz",
+      "sha256": "3a948e45a0c79d1b41e5e40bb4163b5f9e4a193c16ed72c949d8e5f55e9d875d"
+    },
+    "command": "package/claude",
     "allow": ["--version", "-p *", "--print *", "mcp *", "auth *"],
     "home": true
   },
